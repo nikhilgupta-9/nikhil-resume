@@ -48,17 +48,20 @@
         display: flex;
         justify-content: center;
         min-height: 100vh;
-        font-size: 10.5px;
+        font-size: 11.5px;
         color: var(--text);
       }
 
+      /* Single-column, top-to-bottom document flow throughout — this keeps
+         ATS parsing order unambiguous and lets the print engine break
+         cleanly at section/entry boundaries instead of across columns. */
       .resume-container {
         width: 210mm;
         min-height: 297mm;
         height: auto;
         background-color: var(--paper);
         box-shadow: 0 8px 28px rgba(16, 24, 32, 0.12);
-        padding: 11mm 13mm 10mm;
+        padding: 13mm 16mm 12mm;
       }
 
       /* ---------- Header ---------- */
@@ -66,9 +69,9 @@
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
-        gap: 16px;
-        padding-bottom: 9px;
-        margin-bottom: 10px;
+        gap: 18px;
+        padding-bottom: 12px;
+        margin-bottom: 16px;
         border-bottom: 2px solid var(--ink);
       }
 
@@ -78,34 +81,34 @@
 
       .name {
         font-family: "Libre Franklin", sans-serif;
-        font-size: 24px;
+        font-size: 28px;
         font-weight: 800;
         color: var(--ink);
         letter-spacing: 0.2px;
-        margin: 0 0 1px;
+        margin: 0 0 2px;
         line-height: 1.1;
       }
 
       .title {
         font-family: "Libre Franklin", sans-serif;
-        font-size: 12px;
+        font-size: 13.5px;
         font-weight: 600;
         color: var(--accent);
-        margin-bottom: 6px;
+        margin-bottom: 9px;
         letter-spacing: 0.2px;
       }
 
       .contact-grid {
-        display: grid;
-        grid-template-columns: repeat(2, auto);
+        display: flex;
+        flex-wrap: wrap;
         column-gap: 20px;
-        row-gap: 2px;
+        row-gap: 4px;
       }
 
       .contact-item {
         display: flex;
         align-items: center;
-        font-size: 9.5px;
+        font-size: 10.5px;
         color: var(--text);
         white-space: nowrap;
       }
@@ -114,7 +117,7 @@
         color: var(--accent);
         width: 14px;
         margin-right: 7px;
-        font-size: 10.5px;
+        font-size: 11px;
         text-align: center;
       }
 
@@ -128,8 +131,8 @@
       }
 
       .profile-image {
-        width: 72px;
-        height: 72px;
+        width: 86px;
+        height: 86px;
         border-radius: 50%;
         object-fit: cover;
         border: 2.5px solid var(--accent-soft);
@@ -141,26 +144,65 @@
       /* ---------- Section headings ---------- */
       .section-title {
         font-family: "Libre Franklin", sans-serif;
-        font-size: 11.5px;
+        font-size: 13.5px;
         font-weight: 700;
         color: var(--ink);
         letter-spacing: 0.4px;
-        margin: 0 0 6px;
+        margin: 0 0 9px;
         padding-left: 9px;
         border-left: 4px solid var(--accent);
         line-height: 1.2;
       }
 
-      .mb-compact {
-        margin-bottom: 9px;
+      .section-block {
+        margin-bottom: 13px;
       }
 
       /* ---------- Summary ---------- */
       .summary-text {
         text-align: left;
         margin: 0;
-        line-height: 1.4;
+        line-height: 1.55;
         color: var(--text);
+        max-width: 165mm;
+      }
+
+      /* ---------- Skills ---------- */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 24px;
+        row-gap: 9px;
+      }
+
+      .skills-group {
+        break-inside: avoid;
+      }
+
+      .skill-category {
+        font-size: 10px;
+        font-weight: 700;
+        color: var(--ink);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 4px;
+      }
+
+      .skill-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+      }
+
+      .skill-item {
+        background-color: var(--accent-soft);
+        color: #0a4c47;
+        padding: 2px 7px;
+        border-radius: 2px;
+        font-size: 9.6px;
+        font-weight: 600;
+        display: inline-block;
+        line-height: 1.4;
       }
 
       /* ---------- Experience & Education ---------- */
@@ -169,30 +211,30 @@
         display: flex;
         justify-content: space-between;
         align-items: baseline;
-        gap: 8px;
-        margin-bottom: 1px;
+        gap: 10px;
+        margin-bottom: 2px;
       }
 
       .job-title,
       .edu-title {
         font-weight: 700;
         color: var(--ink);
-        font-size: 10.5px;
+        font-size: 12px;
       }
 
       .company {
         color: var(--muted);
-        font-size: 10px;
+        font-size: 11px;
         font-weight: 600;
       }
 
       .edu-institution {
         color: var(--muted);
-        font-size: 9.5px;
+        font-size: 10.8px;
       }
 
       .date {
-        font-size: 9px;
+        font-size: 10.3px;
         color: var(--muted);
         white-space: nowrap;
         font-variant-numeric: tabular-nums;
@@ -201,36 +243,37 @@
       .responsibilities {
         list-style: none;
         padding-left: 0;
-        margin: 2px 0 0;
+        margin: 3px 0 0;
       }
 
       .responsibilities li {
         position: relative;
-        padding-left: 12px;
-        margin-bottom: 2px;
-        line-height: 1.3;
-        font-size: 9.8px;
+        padding-left: 14px;
+        margin-bottom: 2.5px;
+        line-height: 1.38;
+        font-size: 10.6px;
         color: var(--text);
+        max-width: 170mm;
       }
 
       .responsibilities li::before {
         content: "";
         position: absolute;
         left: 0;
-        top: 5px;
+        top: 6px;
         width: 4px;
         height: 4px;
         background: var(--accent);
       }
 
       .exp-block + .exp-block {
-        margin-top: 7px;
+        margin-top: 9px;
       }
 
       /* ---------- Projects ---------- */
       .project-block {
-        margin-bottom: 7px;
-        padding-left: 10px;
+        margin-bottom: 9px;
+        padding-left: 11px;
         border-left: 2px solid var(--line);
       }
 
@@ -238,21 +281,21 @@
         font-weight: 700;
         color: var(--ink);
         margin-bottom: 1px;
-        font-size: 10.5px;
-        line-height: 1.25;
+        font-size: 12px;
+        line-height: 1.3;
       }
 
       .project-role {
         color: var(--accent);
-        font-size: 9px;
+        font-size: 10.3px;
         font-weight: 600;
-        margin-bottom: 3px;
+        margin-bottom: 4px;
       }
 
       .tech-stack {
         font-family: "IBM Plex Mono", monospace;
-        font-size: 8.5px;
-        margin-top: 3px;
+        font-size: 9.4px;
+        margin-top: 4px;
         color: var(--muted);
         letter-spacing: 0.1px;
       }
@@ -263,7 +306,7 @@
       }
 
       .project-link a {
-        font-size: 9.5px;
+        font-size: 10.3px;
         color: var(--accent);
         text-decoration: none;
       }
@@ -272,87 +315,44 @@
         display: flex;
         align-items: baseline;
         flex-wrap: wrap;
-        gap: 6px;
+        gap: 7px;
       }
 
       .status-badge {
         font-family: "Source Sans 3", sans-serif;
-        font-size: 7.8px;
+        font-size: 8.5px;
         font-weight: 700;
         letter-spacing: 0.3px;
         text-transform: uppercase;
         color: #8a5a00;
         background-color: #fdf0d8;
-        padding: 1.5px 6px;
+        padding: 2px 7px;
         border-radius: 8px;
         white-space: nowrap;
       }
 
-      /* ---------- Aside column ---------- */
-      .aside {
-        padding-left: 16px;
-        border-left: 1px solid var(--line);
-      }
-
-      .skills-group {
-        margin-bottom: 6px;
-      }
-
-      .skill-category {
-        font-size: 9px;
-        font-weight: 700;
-        color: var(--ink);
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        margin-bottom: 3px;
-      }
-
-      .skill-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 3px;
-      }
-
-      .skill-item {
-        background-color: var(--accent-soft);
-        color: #0a4c47;
-        padding: 1.5px 5px;
-        border-radius: 2px;
-        font-size: 8.3px;
-        font-weight: 600;
-        display: inline-block;
-        line-height: 1.4;
-      }
-
       .edu-entry + .edu-entry {
-        margin-top: 5px;
+        margin-top: 8px;
       }
 
       /* ---------- Strengths ---------- */
       .strength-item {
         display: flex;
         align-items: flex-start;
-        gap: 6px;
-        margin-bottom: 5px;
+        gap: 7px;
+        margin-bottom: 7px;
       }
 
       .strength-check {
         color: var(--accent);
-        font-size: 9.5px;
+        font-size: 10.5px;
         margin-top: 2px;
         flex-shrink: 0;
       }
 
       .strength-item .compact-text {
-        font-size: 9.5px;
-        line-height: 1.3;
-      }
-
-      /* ---------- Layout grid ---------- */
-      .body-grid {
-        display: grid;
-        grid-template-columns: 1fr 230px;
-        column-gap: 0;
+        font-size: 10.5px;
+        line-height: 1.42;
       }
 
       /* Avoid awkward splits across page breaks when printed */
@@ -384,7 +384,7 @@
   <body>
     <div class="resume-container">
       <!-- Header Section -->
-      <div class="header-section">
+      <div class="header-section page-break">
         <div class="header-identity">
           <h1 class="name">Nikhil Gupta</h1>
           <div class="title">Full Stack &amp; Mobile Application Engineer</div>
@@ -404,8 +404,8 @@
             </div>
             <div class="contact-item">
               <i class="fas fa-globe"></i>
-              <a href="https://nikhil-portfolio.marketmindinsight.com" target="_blank">
-                nikhil-portfolio.marketmindinsight.com
+              <a href="https://nikhilworks.com/portfolio/" target="_blank">
+                nikhilworks.com/portfolio
               </a>
             </div>
             <div class="contact-item">
@@ -430,362 +430,365 @@
         />
       </div>
 
-      <div class="body-grid">
-        <!-- Main column -->
-        <div class="main">
-          <!-- Summary Section -->
-          <div class="mb-compact">
-            <h3 class="section-title">Summary</h3>
-            <p class="summary-text">
-              Full Stack &amp; Mobile Application Engineer with hands-on experience
-              shipping production web platforms and cross-platform iOS/Android apps
-              end-to-end — from secure authentication and payment systems to
-              high-availability VPS infrastructure. Comfortable owning a feature from
-              architecture through deployment across React.js, Node.js, Flutter, and
-              PHP stacks, with a track record of building real-time systems, automated
-              OCR/document workflows, and compliant healthcare and fintech
-              integrations.
-            </p>
-          </div>
+      <!-- Summary Section -->
+      <div class="section-block page-break">
+        <h3 class="section-title">Summary</h3>
+        <p class="summary-text">
+          Full Stack &amp; Mobile Application Engineer with hands-on experience
+          shipping production-grade web systems and cross-platform iOS/Android
+          applications end-to-end. Specialized in low-latency architectures,
+          event-driven WebSockets, biometric authentication pipelines, and
+          compliant data integrations (ABHA/FinTech). Proven track record of
+          owning features from system architecture and database optimization
+          to high-availability Linux VPS deployment across React.js, Node.js,
+          Flutter, and PHP stacks.
+        </p>
+      </div>
 
-          <div class="mb-compact">
-            <h3 class="section-title">Experience</h3>
-
-            <!-- ROLE 3 (current) -->
-            <div class="exp-block page-break">
-              <div class="job-header">
-                <div>
-                  <span class="job-title">Software Engineer</span>
-                  <span class="company"> &nbsp;·&nbsp; Web Search Console</span>
-                </div>
-                <div class="date">Apr 2026 – Present</div>
-              </div>
-
-              <ul class="responsibilities">
-                <li>
-                  Developing and optimizing enterprise PHP/Node.js web services and
-                  relational database schemas for high-traffic client applications.
-                </li>
-                <li>
-                  Designing REST APIs and automating VPS deployment pipelines,
-                  improving release consistency and cutting manual deployment effort.
-                </li>
-                <li>
-                  Collaborating cross-functionally with product and design teams to
-                  ship high-impact client features on schedule.
-                </li>
-              </ul>
-            </div>
-
-            <!-- ROLE 2 -->
-            <div class="exp-block page-break">
-              <div class="job-header">
-                <div>
-                  <span class="job-title">Backend Developer</span>
-                  <span class="company"> &nbsp;·&nbsp; Web2Tech Solutions Pvt. Ltd.</span>
-                </div>
-                <div class="date">Jan 2025 – Mar 2026</div>
-              </div>
-
-              <ul class="responsibilities">
-                <li>
-                  Built and maintained backend systems for e-commerce platforms,
-                  including authentication and order-management workflows, using
-                  Core PHP, MySQL, AJAX, and jQuery.
-                </li>
-                <li>
-                  Optimized backend logic and database queries, improving
-                  application performance and system reliability.
-                </li>
-              </ul>
-            </div>
-
-            <!-- ROLE 1 -->
-            <div class="exp-block page-break">
-              <div class="job-header">
-                <div>
-                  <span class="job-title">Full Stack Developer</span>
-                  <span class="company">
-                    &nbsp;·&nbsp; Vision World Mart &amp; Digi Global Web Solutions
-                  </span>
-                </div>
-                <div class="date">May 2023 – Dec 2024</div>
-              </div>
-
-              <ul class="responsibilities">
-                <li>
-                  Developed full-stack web applications by translating business
-                  requirements into scalable, responsive solutions using PHP and
-                  MySQL.
-                </li>
-                <li>
-                  Collaborated with UI/UX teams to implement optimized user flows
-                  and clean interfaces across client projects.
-                </li>
-              </ul>
+      <!-- Skills Section -->
+      <div class="section-block page-break">
+        <h3 class="section-title">Skills</h3>
+        <div class="skills-grid">
+          <div class="skills-group">
+            <div class="skill-category">Languages &amp; Core</div>
+            <div class="skill-list">
+              <span class="skill-item">JavaScript (ES6+)</span>
+              <span class="skill-item">PHP</span>
+              <span class="skill-item">Dart</span>
+              <span class="skill-item">HTML5</span>
+              <span class="skill-item">CSS3</span>
+              <span class="skill-item">SQL</span>
             </div>
           </div>
 
-          <!-- Projects Section -->
-          <div class="mb-compact">
-            <h3 class="section-title">Featured Projects</h3>
-
-            <div class="project-block page-break">
-              <div class="project-subheader">
-                DRE Homes — Real Estate Web Platform &amp; Mobile App (iOS &amp; Android)
-              </div>
-              <div class="project-role">Lead Full-Stack &amp; Mobile Engineer</div>
-              <ul class="responsibilities">
-                <li>
-                  Engineered and deployed cross-platform iOS &amp; Android mobile
-                  apps alongside a dynamic web platform using Flutter, PHP REST
-                  APIs, and MySQL, delivering a unified real estate experience
-                  across devices.
-                </li>
-                <li>
-                  Implemented multi-factor authentication — Google OAuth 2.0,
-                  biometric/fingerprint login, and SMS/Email OTP verification —
-                  to strengthen account security.
-                </li>
-                <li>
-                  Built an automated OCR document capture and verification
-                  module, reducing manual document-processing effort by 70%.
-                </li>
-                <li>
-                  Configured high-availability Linux VPS deployment with Nginx
-                  reverse proxy and SSL for reliable production uptime.
-                </li>
-              </ul>
-              <div class="tech-stack">
-                <strong>Stack</strong> — Flutter · PHP REST APIs · MySQL · Nginx · VPS
-              </div>
-              <div class="project-link">
-                <a href="https://drehomes.com/" target="_blank">drehomes.com</a>
-                — live on web, with iOS &amp; Android apps published on their respective app stores
-              </div>
+          <div class="skills-group">
+            <div class="skill-category">Frontend &amp; Mobile</div>
+            <div class="skill-list">
+              <span class="skill-item">React.js</span>
+              <span class="skill-item">Next.js</span>
+              <span class="skill-item">Redux Toolkit</span>
+              <span class="skill-item">Tailwind CSS</span>
+              <span class="skill-item">Flutter (Android &amp; iOS)</span>
             </div>
+          </div>
 
-            <div class="project-block page-break">
-              <div class="project-title-row">
-                <div class="project-subheader">
-                  Bazaar Sync — Real-Time Financial Backtesting Engine &amp; Simulator
-                </div>
-                <span class="status-badge">In Active Development / Staging</span>
-              </div>
-              <div class="project-role">System Architect &amp; Backend Developer</div>
-              <ul class="responsibilities">
-                <li>
-                  Built a high-performance backtesting and live paper-trading
-                  engine processing real-time NSE and crypto market feeds.
-                </li>
-                <li>
-                  Implemented low-latency WebSockets to stream live option-chain
-                  data, custom indicators, and simulated order execution.
-                </li>
-                <li>
-                  Designed an algorithmic strategy execution engine calculating
-                  real-time P&amp;L, drawdowns, and slippage.
-                </li>
-                <li>
-                  Integrated Redis in-memory caching and optimized MySQL
-                  indexing for millisecond-level data retrieval.
-                </li>
-              </ul>
-              <div class="tech-stack">
-                <strong>Stack</strong> — Node.js · Express.js · React.js · WebSockets · Redis · MySQL
-              </div>
+          <div class="skills-group">
+            <div class="skill-category">Backend &amp; APIs</div>
+            <div class="skill-list">
+              <span class="skill-item">Node.js</span>
+              <span class="skill-item">Express.js</span>
+              <span class="skill-item">PHP (REST APIs)</span>
+              <span class="skill-item">WebSockets</span>
+              <span class="skill-item">Webhooks</span>
             </div>
+          </div>
 
-            <div class="project-block page-break">
-              <div class="project-subheader">
-                Rejuvenate Digital Health — ABHA Healthcare Integration
-              </div>
-              <div class="project-role">Full Stack Developer</div>
-              <ul class="responsibilities">
-                <li>
-                  Integrated India's official ABHA (Ayushman Bharat Health
-                  Account) APIs for healthcare profile creation and
-                  authentication.
-                </li>
-                <li>
-                  Built automated document-processing workflows with OCR
-                  extraction and automated notification triggers.
-                </li>
-                <li>
-                  Implemented secure token-based API communication, ensuring
-                  strict compliance with healthcare data-protection standards.
-                </li>
-              </ul>
-              <div class="tech-stack">
-                <strong>Stack</strong> — Node.js · PHP · React.js · Secure APIs
-              </div>
+          <div class="skills-group">
+            <div class="skill-category">Databases &amp; Caching</div>
+            <div class="skill-list">
+              <span class="skill-item">MySQL</span>
+              <span class="skill-item">MongoDB</span>
+              <span class="skill-item">Redis</span>
+              <span class="skill-item">Schema Optimization</span>
+              <span class="skill-item">Indexing</span>
             </div>
+          </div>
 
-            <div class="project-block page-break">
-              <div class="project-subheader">
-                Printmont.com — Decoupled E-Commerce System
-              </div>
-              <div class="project-role">Full Stack Engineer</div>
-              <ul class="responsibilities">
-                <li>
-                  Developed a headless e-commerce store with a dynamic React.js
-                  frontend and a scalable PHP REST API backend.
-                </li>
-                <li>
-                  Integrated secure payment gateways and real-time inventory
-                  tracking, and optimized database queries for fast checkouts.
-                </li>
-              </ul>
-              <div class="tech-stack">
-                <strong>Stack</strong> — React.js · PHP REST APIs · MySQL
-              </div>
-              <div class="project-link">
-                <a href="https://printmont.com/" target="_blank">printmont.com</a>
-              </div>
+          <div class="skills-group">
+            <div class="skill-category">Cloud &amp; Infrastructure</div>
+            <div class="skill-list">
+              <span class="skill-item">Linux VPS Admin</span>
+              <span class="skill-item">Nginx</span>
+              <span class="skill-item">PM2</span>
+              <span class="skill-item">Hostinger VPS</span>
+              <span class="skill-item">cPanel</span>
+              <span class="skill-item">Git/GitHub</span>
+            </div>
+          </div>
+
+          <div class="skills-group">
+            <div class="skill-category">Security &amp; Authentication</div>
+            <div class="skill-list">
+              <span class="skill-item">Google OAuth 2.0</span>
+              <span class="skill-item">Biometric Auth</span>
+              <span class="skill-item">SMS/Email OTP</span>
+              <span class="skill-item">JWT</span>
+            </div>
+          </div>
+
+          <div class="skills-group">
+            <div class="skill-category">Integrations &amp; Tools</div>
+            <div class="skill-list">
+              <span class="skill-item">OCR Document Verification</span>
+              <span class="skill-item">ABHA API</span>
+              <span class="skill-item">Postman</span>
+              <span class="skill-item">Claude AI Workflows</span>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Aside column -->
-        <div class="aside">
-          <!-- Skills -->
-          <div class="mb-compact page-break">
-            <h3 class="section-title">Skills</h3>
+      <!-- Experience Section -->
+      <div class="section-block">
+        <h3 class="section-title">Experience</h3>
 
-            <div class="skills-group">
-              <div class="skill-category">Languages &amp; Core</div>
-              <div class="skill-list">
-                <span class="skill-item">JavaScript (ES6+)</span>
-                <span class="skill-item">PHP</span>
-                <span class="skill-item">Dart</span>
-                <span class="skill-item">HTML5</span>
-                <span class="skill-item">CSS3</span>
-                <span class="skill-item">SQL</span>
-              </div>
+        <!-- ROLE 3 (current) -->
+        <div class="exp-block page-break">
+          <div class="job-header">
+            <div>
+              <span class="job-title">Software Engineer</span>
+              <span class="company"> &nbsp;·&nbsp; Web Search Console</span>
             </div>
-
-            <div class="skills-group">
-              <div class="skill-category">Frontend &amp; Mobile</div>
-              <div class="skill-list">
-                <span class="skill-item">React.js</span>
-                <span class="skill-item">Next.js</span>
-                <span class="skill-item">Redux Toolkit</span>
-                <span class="skill-item">Tailwind CSS</span>
-                <span class="skill-item">Flutter (Android &amp; iOS)</span>
-              </div>
-            </div>
-
-            <div class="skills-group">
-              <div class="skill-category">Backend &amp; APIs</div>
-              <div class="skill-list">
-                <span class="skill-item">Node.js</span>
-                <span class="skill-item">Express.js</span>
-                <span class="skill-item">PHP (REST APIs)</span>
-                <span class="skill-item">WebSockets</span>
-                <span class="skill-item">Webhooks</span>
-              </div>
-            </div>
-
-            <div class="skills-group">
-              <div class="skill-category">Databases &amp; Caching</div>
-              <div class="skill-list">
-                <span class="skill-item">MySQL</span>
-                <span class="skill-item">MongoDB</span>
-                <span class="skill-item">Redis</span>
-                <span class="skill-item">Schema Optimization</span>
-                <span class="skill-item">Indexing</span>
-              </div>
-            </div>
-
-            <div class="skills-group">
-              <div class="skill-category">Cloud &amp; Infrastructure</div>
-              <div class="skill-list">
-                <span class="skill-item">Linux VPS Admin</span>
-                <span class="skill-item">Nginx</span>
-                <span class="skill-item">PM2</span>
-                <span class="skill-item">Hostinger VPS</span>
-                <span class="skill-item">cPanel</span>
-                <span class="skill-item">Git/GitHub</span>
-              </div>
-            </div>
-
-            <div class="skills-group">
-              <div class="skill-category">Security &amp; Authentication</div>
-              <div class="skill-list">
-                <span class="skill-item">Google OAuth 2.0</span>
-                <span class="skill-item">Biometric Auth</span>
-                <span class="skill-item">SMS/Email OTP</span>
-                <span class="skill-item">JWT</span>
-              </div>
-            </div>
-
-            <div class="skills-group">
-              <div class="skill-category">Integrations &amp; Tools</div>
-              <div class="skill-list">
-                <span class="skill-item">OCR Document Verification</span>
-                <span class="skill-item">ABHA API</span>
-                <span class="skill-item">Postman</span>
-                <span class="skill-item">Claude AI Workflows</span>
-              </div>
-            </div>
+            <div class="date">Apr 2026 – Present</div>
           </div>
 
-          <!-- Education -->
-          <div class="mb-compact page-break">
-            <h3 class="section-title">Education</h3>
+          <ul class="responsibilities">
+            <li>
+              Developing and optimizing enterprise PHP/Node.js web services and
+              relational database schemas for high-traffic client applications.
+            </li>
+            <li>
+              Designing REST APIs and automating VPS deployment pipelines,
+              improving release consistency and cutting deployment cycles.
+            </li>
+            <li>
+              Collaborating cross-functionally with product and design teams to
+              ship high-impact client features on schedule.
+            </li>
+          </ul>
+        </div>
 
-            <div class="edu-entry">
-              <div class="edu-header">
-                <div class="edu-title">Master of Computer Applications (MCA)</div>
-              </div>
-              <div class="edu-institution">Indira Gandhi National Open University (IGNOU)</div>
-              <div class="date">2024 – 2025</div>
+        <!-- ROLE 2 -->
+        <div class="exp-block page-break">
+          <div class="job-header">
+            <div>
+              <span class="job-title">Backend Developer</span>
+              <span class="company"> &nbsp;·&nbsp; Web2Tech Solutions Pvt. Ltd.</span>
             </div>
-
-            <div class="edu-entry">
-              <div class="edu-header">
-                <div class="edu-title">Certificate Course in Full Stack Development</div>
-              </div>
-              <div class="edu-institution">Aptech Learning, New Delhi</div>
-              <div class="date">2022 – 2023</div>
-            </div>
-
-            <div class="edu-entry">
-              <div class="edu-header">
-                <div class="edu-title">Master of Arts (MA) &amp; Bachelor of Arts (Honours)</div>
-              </div>
-              <div class="edu-institution">University of Delhi</div>
-              <div class="date">2015 – 2020</div>
-            </div>
+            <div class="date">Jan 2025 – Mar 2026</div>
           </div>
 
-          <!-- Strengths -->
-          <div class="page-break">
-            <h3 class="section-title">Strengths</h3>
+          <ul class="responsibilities">
+            <li>
+              Built and maintained scalable backend systems for e-commerce
+              platforms, including authentication and order-management
+              workflows, using Core PHP, MySQL, AJAX, and jQuery.
+            </li>
+            <li>
+              Optimized backend logic and database queries, improving
+              application performance and system reliability.
+            </li>
+          </ul>
+        </div>
 
-            <div class="strength-item">
-              <i class="fas fa-check-circle strength-check"></i>
-              <div class="compact-text">
-                Owns features end-to-end — from architecture and API design
-                through mobile/web delivery and VPS deployment.
-              </div>
+        <!-- ROLE 1 -->
+        <div class="exp-block page-break">
+          <div class="job-header">
+            <div>
+              <span class="job-title">Full Stack Developer</span>
+              <span class="company">
+                &nbsp;·&nbsp; Vision World Mart &amp; Digi Global Web Solutions
+              </span>
             </div>
+            <div class="date">May 2023 – Dec 2024</div>
+          </div>
 
-            <div class="strength-item">
-              <i class="fas fa-check-circle strength-check"></i>
-              <div class="compact-text">
-                Builds secure-by-default systems: multi-factor auth, token-based
-                APIs, and compliance-aware data handling.
-              </div>
-            </div>
+          <ul class="responsibilities">
+            <li>
+              Developed full-stack web applications by translating business
+              requirements into scalable, responsive solutions using PHP and
+              MySQL.
+            </li>
+            <li>
+              Collaborated with UI/UX teams to implement optimized user flows
+              and clean interfaces across client projects.
+            </li>
+          </ul>
+        </div>
+      </div>
 
-            <div class="strength-item">
-              <i class="fas fa-check-circle strength-check"></i>
-              <div class="compact-text">
-                Strong cross-functional communicator, partnering closely with
-                product, design, and business stakeholders.
-              </div>
+      <!-- Projects Section -->
+      <div class="section-block">
+        <h3 class="section-title">Featured Projects</h3>
+
+        <div class="project-block page-break">
+          <div class="project-subheader">
+            DRE Homes — Real Estate Web Platform &amp; Mobile App (iOS &amp; Android)
+          </div>
+          <div class="project-role">Lead Full-Stack &amp; Mobile Engineer</div>
+          <ul class="responsibilities">
+            <li>
+              Architected and shipped cross-platform iOS &amp; Android mobile
+              applications along with a dynamic web portal, supporting
+              high-traffic property search and lead ingestion pipelines.
+            </li>
+            <li>
+              Implemented enterprise authentication pipeline: Google OAuth
+              2.0, biometric/fingerprint login, and SMS/Email OTP
+              verification with automated session handling.
+            </li>
+            <li>
+              Engineered an automated OCR document capture and KYC
+              verification pipeline, reducing manual document review
+              overhead by 70%.
+            </li>
+            <li>
+              Configured high-availability Linux VPS deployment with Nginx
+              reverse proxy, automated SSL, and database query optimization.
+            </li>
+          </ul>
+          <div class="tech-stack">
+            <strong>Stack</strong> — Flutter (Dart) · PHP REST APIs · MySQL · Nginx · Linux VPS
+          </div>
+          <div class="project-link">
+            <a href="https://drehomes.com/" target="_blank">drehomes.com</a>
+            — iOS &amp; Android apps live on App Store &amp; Google Play
+          </div>
+        </div>
+
+        <div class="project-block page-break">
+          <div class="project-title-row">
+            <div class="project-subheader">
+              Bazaar Sync — Real-Time Financial Backtesting Engine &amp; Simulator
             </div>
+            <span class="status-badge">Enterprise FinTech Prototype / Active Staging</span>
+          </div>
+          <div class="project-role">System Architect &amp; Backend Engineer</div>
+          <ul class="responsibilities">
+            <li>
+              Engineered a high-throughput backtesting and paper trading
+              platform capable of consuming and processing real-time NSE
+              and crypto market ticks.
+            </li>
+            <li>
+              Implemented low-latency WebSockets and a Redis caching layer
+              to stream live multi-strike option-chain data with
+              sub-100ms response time.
+            </li>
+            <li>
+              Built an algorithmic strategy execution engine calculating
+              real-time mark-to-market P&amp;L, maximum drawdown, and
+              order slippage metrics.
+            </li>
+            <li>
+              Optimized MySQL schema and indexing strategies for
+              millisecond historical tick-data retrieval under high
+              market volatility.
+            </li>
+          </ul>
+          <div class="tech-stack">
+            <strong>Stack</strong> — Node.js · Express.js · React.js · WebSockets · Redis · MySQL
+          </div>
+        </div>
+
+        <div class="project-block page-break">
+          <div class="project-subheader">
+            Rejuvenate Digital Health — ABHA Healthcare Integration
+          </div>
+          <div class="project-role">Full Stack Integration Engineer</div>
+          <ul class="responsibilities">
+            <li>
+              Integrated India's official ABHA (Ayushman Bharat Health
+              Account) APIs for healthcare profile creation, digital health
+              record verification, and authentication.
+            </li>
+            <li>
+              Designed automated document-processing pipelines with OCR
+              text extraction and automated notification triggers.
+            </li>
+            <li>
+              Enforced token-based authentication and end-to-end data
+              encryption in compliance with strict healthcare data
+              privacy standards.
+            </li>
+          </ul>
+          <div class="tech-stack">
+            <strong>Stack</strong> — Node.js · PHP · React.js · Secure APIs · Document Workflows
+          </div>
+        </div>
+
+        <div class="project-block page-break">
+          <div class="project-subheader">
+            Printmont.com — Decoupled E-Commerce System
+          </div>
+          <div class="project-role">Full Stack Web Engineer</div>
+          <ul class="responsibilities">
+            <li>
+              Developed a headless e-commerce platform decoupling a dynamic
+              React.js frontend from a high-throughput PHP REST backend API.
+            </li>
+            <li>
+              Integrated secure multi-gateway payment processing, real-time
+              inventory synchronization, and dynamic cart state management.
+            </li>
+            <li>
+              Streamlined database indexing and asset caching, achieving
+              sub-second page loads and higher checkout conversion.
+            </li>
+          </ul>
+          <div class="tech-stack">
+            <strong>Stack</strong> — React.js · PHP REST APIs · MySQL · Payment Gateways
+          </div>
+          <div class="project-link">
+            <a href="https://printmont.com/" target="_blank">printmont.com</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div class="section-block page-break">
+        <h3 class="section-title">Education</h3>
+
+        <div class="edu-entry">
+          <div class="edu-header">
+            <div class="edu-title">Master of Computer Applications (MCA)</div>
+            <div class="date">2024 – 2025</div>
+          </div>
+          <div class="edu-institution">Indira Gandhi National Open University (IGNOU)</div>
+        </div>
+
+        <div class="edu-entry">
+          <div class="edu-header">
+            <div class="edu-title">Certificate Course in Full Stack Development</div>
+            <div class="date">2022 – 2023</div>
+          </div>
+          <div class="edu-institution">Aptech Learning, New Delhi</div>
+        </div>
+
+        <div class="edu-entry">
+          <div class="edu-header">
+            <div class="edu-title">Bachelor of Arts (Honours)</div>
+            <div class="date">2015 – 2018</div>
+          </div>
+          <div class="edu-institution">University of Delhi</div>
+        </div>
+      </div>
+
+      <!-- Strengths -->
+      <div class="section-block page-break">
+        <h3 class="section-title">Strengths</h3>
+
+        <div class="strength-item">
+          <i class="fas fa-check-circle strength-check"></i>
+          <div class="compact-text">
+            Owns features end-to-end — from architecture and API design
+            through mobile/web delivery and VPS deployment.
+          </div>
+        </div>
+
+        <div class="strength-item">
+          <i class="fas fa-check-circle strength-check"></i>
+          <div class="compact-text">
+            Builds secure-by-default systems: multi-factor auth, token-based
+            APIs, and compliance-aware data handling.
+          </div>
+        </div>
+
+        <div class="strength-item">
+          <i class="fas fa-check-circle strength-check"></i>
+          <div class="compact-text">
+            Strong cross-functional communicator, partnering closely with
+            product, design, and business stakeholders.
           </div>
         </div>
       </div>
