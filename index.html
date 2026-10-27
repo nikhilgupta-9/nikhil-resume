@@ -31,9 +31,14 @@
         box-sizing: border-box;
       }
 
+      /* @page margin is what actually gives EVERY printed page (not just
+         the start/end of the document) a consistent top/bottom/side
+         margin — a single flowing container's own padding only reaches
+         the very first and very last page, leaving page breaks flush
+         against the paper edge. */
       @page {
         size: A4;
-        margin: 0;
+        margin: 14mm 15mm;
       }
 
       html,
@@ -368,11 +373,15 @@
           padding: 0;
         }
 
+        /* @page margin now supplies the page margins on every page, so the
+           container itself prints edge-to-edge with no extra padding of
+           its own — avoids doubling up the margin on page 1 and leaving
+           later pages without one. */
         .resume-container {
           box-shadow: none;
           width: 100%;
           min-height: 0;
-          padding: 12mm 14mm;
+          padding: 0;
         }
 
         .no-print {
